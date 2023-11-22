@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import homestat as t
+import homestat_stripped as t
 import unittest
 
 
