@@ -34,12 +34,32 @@ def long_division(dividend, divider):
 def long_division(dividend, divider):
     quotient = dividend // divider
     remainder = dividend % divider
-    result = f"{dividend}|{divider}\n{quotient} |{remainder}\n"
-    while remainder != 0:
-        remainder = remainder * 10
-        new_quotient = remainder // divider
-        remainder = remainder % divider
-        result += f"{new_quotient}\n"
+    probel = " " * (len(str(dividend)))
+
+    if divider == 0:
+        result = "Делить на 0 нельзя"
+    elif dividend == 0:
+        result = f"{dividend}|{divider}\n |0"
+    elif divider > dividend:
+        result = f" {dividend}|{divider}\n‾{dividend}|0\n{probel}0"
+    elif dividend == divider:
+        result = f" {dividend}|{divider}\n‾{dividend}|1\n{probel}0"
+    else:
+        number = (divider * int(str(quotient)[0]))
+        probel2 = " " * (len(str(dividend)) - len(str(number)))
+        result = f" {dividend}|{divider}\n‾{number}{probel2}|{quotient}\n"#{probel}{remainder}\n
+        for i in range(0,len(str(dividend))-1):
+            digit = int(str(quotient)[i]) if i < len(str(quotient)) else 0
+            number = (divider * digit) if i < len(str(quotient)) else (remainder * 10)
+            if i == 0:
+                number_2 = ((int(str(dividend)[i:len(str(number))+i])-number) * 10 + int(str(dividend)[len(str(number))-1:len(str(number))]))
+            else:
+                number_2 = (number_2 - number) * 10 + int(str(dividend)[len(str(number))-1:len(str(number))])
+            # print("1:",number_2, "- number= ",number)
+            # print("@2",number_2)
+            # print(i)
+            result += f"{probel2} {number_2}\n{probel2}‾{number}\n"
+        return result
     return result
 
 def main():
