@@ -46,7 +46,7 @@ def main():
         if chain is not None:
             print(' -> '.join(chain))
     else:
-        print("Please provide a start word as a command line argument.")
+        print("Пожалуйста сначала введи начальное слово py phil.py 'cлово'.")
         
 if __name__ == '__main__':
     main()
